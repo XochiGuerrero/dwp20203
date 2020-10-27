@@ -1,68 +1,91 @@
 <template>
-  <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
-    </ion-content>
-  </ion-page>
-</template>
+    <ion-page>
+        <ion-header :translucent="true">
+            <ion-toolbar>
+                <ion-title>Blank</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content :fullscreen="true">
+            <ion-header collapse="condense">
+                <ion-toolbar>
+                    <ion-title size="large">Blank</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-subtitle>Control de acceso</ion-card-subtitle>
+                    <ion-card-title>Ingresar</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-item>
+                        <ion-label position="floating">Username</ion-label>
+                        <ion-input name="Username"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input name="Password" type="password"></ion-input>
+                    </ion-item>
+                    <IonButton expand="block" color="primary" @click="onIngresarClick()">Ingresar</IonButton>
+                    <a href="register">Registrar</a>
 
+                </ion-card-content>
+            </ion-card>
+        </ion-content>
+    </ion-page>
+</template>
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, alertController } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Home',
-  components: {
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar
-  }
+    name: 'Home',
+    components: {
+        IonContent,
+        IonHeader,
+        IonPage,
+        IonTitle,
+        IonToolbar,
+        IonButton,
+    },
+    methods: {
+        async onIngresarClick() {
+            const alert = await alertController
+                .create({
+                    header: 'Alert',
+                    message: 'Hola mundo',
+                    buttons: ['OK'],
+                });
+            return alert.present();
+        }
+    }, //methods
 });
 </script>
-
 <style scoped>
 #container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+    text-align: center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #container strong {
-  font-size: 20px;
-  line-height: 26px;
+    font-size: 20px;
+    line-height: 26px;
 }
 
 #container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #8c8c8c;
+
+    margin: 0;
 }
 
 #container a {
-  text-decoration: none;
+    text-decoration: none;
 }
 </style>
